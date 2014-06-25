@@ -72,6 +72,14 @@ EOT;
             $content .= $asset->getContent();
             if (isset($this->includes[$sourceRoot .'/'. $sourcePath]['append'])) {
                 foreach ($this->includes[$sourceRoot .'/'. $sourcePath]['append'] as $include_asset) {
+                    $filename = basename($include_asset->getSourcePath());
+                    $prefix = <<<EOT
+  /*
+  --------------------------------------------
+       Begin $filename
+  --------------------------------------------
+   */
+EOT;
                     $content .= $prefix . PHP_EOL . $include_asset->dump() . PHP_EOL;
                 }
             }
