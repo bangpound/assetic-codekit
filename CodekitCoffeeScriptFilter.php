@@ -3,6 +3,7 @@
 namespace Bangpound\Assetic\Filter;
 
 use Assetic\Asset\AssetInterface;
+use Assetic\Asset\FileAsset;
 use Assetic\Filter\CoffeeScriptFilter;
 use Assetic\Filter\FilterInterface;
 
