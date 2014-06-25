@@ -2,7 +2,7 @@
     "name": "bangpound/assetic-codekit",
     "description": "Assetic filters to support proprietary Codekit extensions",
     "require": {
-        "kriswallsmith/assetic": "~1.1.2"
+        "kriswallsmith/assetic": "~1.1"
     },
     "license": "MIT",
     "authors": [
