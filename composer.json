@@ -1,0 +1,22 @@
+{
+    "name": "bangpound/assetic-codekit",
+    "description": "Assetic filters to support proprietary Codekit extensions",
+    "require": {
+        "kriswallsmith/assetic": "~1.1.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Benjamin Doherty",
+            "email": "bjd@bangpound.org"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Bangpound\\Assetic\\Filter\\": ""}
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
