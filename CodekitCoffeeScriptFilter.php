@@ -10,10 +10,14 @@ use Assetic\Filter\FilterInterface;
 class CodekitCoffeeScriptFilter implements FilterInterface
 {
     private $includes;
+    private $suffix;
+    private $prefix;
 
-    public function __construct(CoffeeScriptFilter $coffee)
+    public function __construct(CoffeeScriptFilter $coffee, $prefix = '', $suffix = '')
     {
         $this->coffee = $coffee;
+        $this->prefix = $prefix;
+        $this->suffix = $suffix;
     }
 
     /**
@@ -53,7 +57,7 @@ class CodekitCoffeeScriptFilter implements FilterInterface
         $sourceRoot = $asset->getSourceRoot();
         $sourcePath = $asset->getSourcePath();
         if ($this->includes[$sourceRoot .'/'. $sourcePath]) {
-            $content = '(function ($, Drupal, window, document, undefined) {' . PHP_EOL;
+            $content = '(function ('. $this->prefix .') {' . PHP_EOL;
             if (isset($this->includes[$sourceRoot .'/'. $sourcePath]['prepend'])) {
                 /** @var AssetInterface $include_asset */
                 foreach ($this->includes[$sourceRoot .'/'. $sourcePath]['prepend'] as $include_asset) {
@@ -83,7 +87,7 @@ EOT;
                     $content .= $prefix . PHP_EOL . $include_asset->dump() . PHP_EOL;
                 }
             }
-            $content .= PHP_EOL . '})(jQuery, Drupal, this, this.document);';
+            $content .= PHP_EOL . '})(' . $this->suffix .');';
             $asset->setContent($content);
         }
     }
